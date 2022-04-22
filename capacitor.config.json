@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "Board Game Library",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

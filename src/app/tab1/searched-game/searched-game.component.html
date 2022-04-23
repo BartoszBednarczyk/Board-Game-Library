@@ -1,0 +1,13 @@
+<ng-container *ngIf="game; else loading">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>{{ game.name }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content [fullscreen]="true"> Details </ion-content>
+</ng-container>
+
+<ng-template #loading>
+  <ion-content [fullscreen]="true"> Loading </ion-content>
+</ng-template>

@@ -26,4 +26,8 @@ export class SearchedGameComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {}
+
+  openCategoryPage(url: string): void {
+    window.location.href = url;
+  }
 }

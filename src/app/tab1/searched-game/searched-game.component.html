@@ -5,7 +5,42 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-content [fullscreen]="true"> Details </ion-content>
+  <ion-content [fullscreen]="true" class="content">
+    <div class="details">
+      <ion-img [src]="game.thumb_url" class="thumbnail"></ion-img>
+      <div>
+        <div class="game-icon">
+          <ion-icon name="people"></ion-icon>
+          <p>{{ game.min_players }} - {{ game.max_players }}</p>
+        </div>
+        <div class="game-icon">
+          <ion-icon name="time"></ion-icon>
+          <p>{{ game.min_playtime }} - {{ game.max_playtime }}</p>
+        </div>
+        <div class="game-icon">
+          <ion-icon name="person-add"></ion-icon>
+          <p>{{ game.min_age }}+</p>
+        </div>
+        <div class="rating">
+          <ion-icon name="star" item-start></ion-icon>
+          <p>{{ game.average_user_rating | number: "1.0-2" }}</p>
+          <div>
+            <ion-icon name="cloud">A</ion-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="categories">
+      <ion-chip
+        *ngFor="let category of game.categories"
+        (click)="openCategoryPage(category.url)"
+        >{{ category.id }}</ion-chip
+      >
+    </div>
+    <div class="description">
+      <p>{{ game.description_preview }}</p>
+    </div>
+  </ion-content>
 </ng-container>
 
 <ng-template #loading>

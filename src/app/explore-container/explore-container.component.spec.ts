@@ -15,7 +15,7 @@ describe('ExploreContainerComponent', () => {
 
     fixture = TestBed.createComponent(ExploreContainerComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixture.detectChanges(); 
   }));
 
   it('should create', () => {

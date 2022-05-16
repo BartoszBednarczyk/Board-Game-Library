@@ -3,6 +3,12 @@
   overflow: hidden;
 }
 
+ion-thumbnail {
+  -webkit-box-shadow: inset 0px 0px 42px -6px rgba(31, 31, 31, 1);
+  -moz-box-shadow: inset 0px 0px 42px -6px rgba(31, 31, 31, 1);
+  box-shadow: inset 0px 0px 42px -6px rgba(31, 31, 31, 1);
+}
+
 .game-icon {
   align-items: center;
   ion-icon {

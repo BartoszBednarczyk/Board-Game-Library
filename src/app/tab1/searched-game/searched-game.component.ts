@@ -73,7 +73,7 @@ export class SearchedGameComponent implements OnInit, AfterViewInit {
         name: this.game.name,
         min_players: this.game.min_players,
         max_players: this.game.max_players,
-        min_playitime: this.game.min_playtime,
+        min_playtime: this.game.min_playtime,
         max_playtime: this.game.max_playtime,
         min_age: this.game.min_age,
         average_user_rating: this.game.average_user_rating,
@@ -89,7 +89,7 @@ export class SearchedGameComponent implements OnInit, AfterViewInit {
         name: this.game.name,
         min_players: this.game.min_players,
         max_players: this.game.max_players,
-        min_playitime: this.game.min_playtime,
+        min_playtime: this.game.min_playtime,
         max_playtime: this.game.max_playtime,
         min_age: this.game.min_age,
         average_user_rating: this.game.average_user_rating,
@@ -116,7 +116,7 @@ export class SearchedGameComponent implements OnInit, AfterViewInit {
       name: this.game.name,
       min_players: this.game.min_players,
       max_players: this.game.max_players,
-      min_playitime: this.game.min_playtime,
+      min_playtime: this.game.min_playtime,
       max_playtime: this.game.max_playtime,
       min_age: this.game.min_age,
       average_user_rating: this.game.average_user_rating,
@@ -124,6 +124,44 @@ export class SearchedGameComponent implements OnInit, AfterViewInit {
       thumb_url: this.game.thumb_url,
       url: this.game.url,
       collection: 'wishlist',
+    };
+    await this.addData(game);
+  }
+
+  async borrowGame() {
+    await this.deleteFromCollection();
+    const game = {
+      id: this.game.id,
+      name: this.game.name,
+      min_players: this.game.min_players,
+      max_players: this.game.max_players,
+      min_playtime: this.game.min_playtime,
+      max_playtime: this.game.max_playtime,
+      min_age: this.game.min_age,
+      average_user_rating: this.game.average_user_rating,
+      description_preview: this.game.description_preview,
+      thumb_url: this.game.thumb_url,
+      url: this.game.url,
+      collection: 'borrowed',
+    };
+    await this.addData(game);
+  }
+
+  async unborrowGame() {
+    await this.deleteFromCollection();
+    const game = {
+      id: this.game.id,
+      name: this.game.name,
+      min_players: this.game.min_players,
+      max_players: this.game.max_players,
+      min_playtime: this.game.min_playtime,
+      max_playtime: this.game.max_playtime,
+      min_age: this.game.min_age,
+      average_user_rating: this.game.average_user_rating,
+      description_preview: this.game.description_preview,
+      thumb_url: this.game.thumb_url,
+      url: this.game.url,
+      collection: 'owned',
     };
     await this.addData(game);
   }
@@ -176,6 +214,24 @@ export class SearchedGameComponent implements OnInit, AfterViewInit {
           } else {
             this.addToWishlist();
           }
+        },
+      });
+    }
+    if (this.inCollection === 'owned') {
+      buttons.splice(1, 0, {
+        text: `Borrow`,
+        icon: 'people',
+        handler: () => {
+          this.borrowGame();
+        },
+      });
+    }
+    if (this.inCollection === 'borrowed') {
+      buttons.splice(1, 0, {
+        text: `Return`,
+        icon: 'people',
+        handler: () => {
+          this.unborrowGame();
         },
       });
     }

@@ -27,8 +27,37 @@
     <ion-segment-button value="borrowed">
       <ion-label>Borrowed</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="wanted">
+    <ion-segment-button value="wishlist">
       <ion-label>Wanted</ion-label>
     </ion-segment-button>
   </ion-segment>
+  <ng-container *ngIf="games.length">
+    <ion-list>
+      <ion-item
+        *ngFor="let game of games"
+        (click)="setActiveGame(game)"
+        [routerLink]="['searchedGame']"
+      >
+        <ion-thumbnail slot="start">
+          <ion-img [src]="game.thumb_url" class="thumbnail"></ion-img>
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{game.name}}</h2>
+          <div class="game-icon">
+            <ion-icon name="people"></ion-icon>
+            <p>{{game.min_players}} - {{game.max_players}}</p>
+          </div>
+          <div class="game-icon">
+            <ion-icon name="time"></ion-icon>
+            <p>{{game.min_playtime}} - {{game.max_playtime}}</p>
+          </div>
+          <div class="rating">
+            <ion-icon name="star" item-start></ion-icon>
+            <p>{{game.average_user_rating | number: '1.0-2'}}</p>
+          </div>
+          <p text-wrap>{{game.description_preview}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
 </ion-content>

@@ -4,4 +4,31 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true"> </ion-content>
+<ion-content [fullscreen]="true">
+  <!-- <ion-tabs style="display: contents">
+    <ion-tab-bar slot="top">
+      <ion-tab-button tab="">
+        <ion-label>Owned</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="borrowed">
+        <ion-label>Borrowed</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="wanted">
+        <ion-label>Wanted</ion-label>
+        <ion-badge>6</ion-badge>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs> -->
+
+  <ion-segment [(ngModel)]="segment" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="owned">
+      <ion-label>Owned</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="borrowed">
+      <ion-label>Borrowed</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="wanted">
+      <ion-label>Wanted</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-content>

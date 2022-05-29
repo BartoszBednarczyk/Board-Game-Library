@@ -25,24 +25,25 @@
           <ion-icon name="star" item-start></ion-icon>
           <p>{{ game.average_user_rating | number: "1.0-2" }}</p>
           <div>
-            <ion-icon name="cloud">A</ion-icon>
+            <ion-icon name="cloud"></ion-icon>
+            <a href="{{ game.url }}">Web</a>
           </div>
         </div>
       </div>
     </div>
-    <div class="categories">
+    <!-- <div class="categories">
       <ion-chip
         *ngFor="let category of game.categories"
         (click)="openCategoryPage(category.url)"
         >{{ category.id }}</ion-chip
       >
-    </div>
+    </div> -->
     <div class="description">
       <p>{{ game.description_preview }}</p>
     </div>
 
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button (click)="addData()">
+      <ion-fab-button (click)="presentActionSheet()">
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
     </ion-fab>

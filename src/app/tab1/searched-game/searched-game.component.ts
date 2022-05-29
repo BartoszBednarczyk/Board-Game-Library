@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GamesService } from 'src/app/games.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-searched-game',
@@ -9,11 +10,15 @@ import { GamesService } from 'src/app/games.service';
 })
 export class SearchedGameComponent implements OnInit, AfterViewInit {
   game: any;
+  listData = [];
   constructor(
     private _gamesService: GamesService,
     private _router: Router,
-    private _route: ActivatedRoute
-  ) {}
+    private _route: ActivatedRoute,
+    private _dataService: DataService
+  ) {
+    this.loadData();
+  }
 
   ngOnInit() {}
 
@@ -29,5 +34,15 @@ export class SearchedGameComponent implements OnInit, AfterViewInit {
 
   openCategoryPage(url: string): void {
     window.location.href = url;
+  }
+
+  async loadData() {
+    this.listData = await this._dataService.getData();
+    console.log(this.listData);
+  }
+
+  async addData() {
+    await this._dataService.addData(`Bartosz test`);
+    this.loadData();
   }
 }

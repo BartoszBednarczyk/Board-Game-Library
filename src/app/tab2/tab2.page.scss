@@ -1,0 +1,19 @@
+.center {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scan {
+  width: 50vw;
+  height: 100px;
+}

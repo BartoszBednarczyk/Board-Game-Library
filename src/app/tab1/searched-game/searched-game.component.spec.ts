@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ActionSheetController, IonicModule } from '@ionic/angular';
+import { GamesService } from 'src/app/games.service';
+import { DataService } from 'src/app/services/data.service';
 
 import { SearchedGameComponent } from './searched-game.component';
 
@@ -9,13 +12,19 @@ describe('SearchedGameComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchedGameComponent ],
-      imports: [IonicModule.forRoot()]
+      declarations: [SearchedGameComponent],
+      providers: [
+        { provide: GamesService, useValue: {} },
+        { provide: Router, useValue: {} },
+        { provide: ActivatedRoute, useValue: {} },
+        { provide: DataService, useValue: {} },
+        { provide: ActionSheetController, useValue: {} },
+      ],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SearchedGameComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   }));
 
   it('should create', () => {
